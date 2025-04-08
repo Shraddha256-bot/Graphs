@@ -1,0 +1,39 @@
+#Graph implementation using adjacency list
+class Graph:
+    def __init__(self):
+        self.V = []
+        self.adj_inf = {}
+
+    def add_vertex(self, vertex):
+        if vertex not in self.V:
+            self.V.append(vertex)
+            self.adj_inf[vertex] = []
+        else:
+            print("One or both vertices already exists")
+
+    def add_edge(self,source,destination,weight = 1):
+        if source in self.V and destination in self.V:
+            self.adj_inf[source].append(destination,weight)
+            self.adj_inf[destination].append(source,weight)  #Undirected graph
+        else:
+            print(f"Vertex {vertex} already exists")
+
+    def display(self):
+        for vertex in self.V:
+            print(f"Vertex -> {vertex} ")
+
+        for vertex, neighbour in self.adj_inf.items():
+            print(f"Vertex{vertex} : {neighbour}")
+
+m = graph()
+m.add_vertex('A')
+m.add_vertex('B')
+m.add_vertex('C')
+m.add_vertex('D')
+
+m.add_edge('A','B')
+m.add_edge('B','D')
+m.add_edge('B','D')
+m.add_edge('B','C')
+
+m.display()
